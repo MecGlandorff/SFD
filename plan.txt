@@ -7,6 +7,20 @@ Architecture idea for support program:
 -Module Sequence Generator & output (Seq_output): collects and gives as outputs data per vertebrae
 -Optional module(errors) if running into issues for debugging
 -Main module
+Architecture:
+project_root/
+??? data/
+?   ??? train_segmented.csv etc.
+??? output/
+?   ??? detection_results.csv
+?   ??? sequences.json
+??? data_handling.py
+??? vertebrae_detector.py
+??? seq_output.py
+??? errors.py
+??? main.py
+??? config.yaml
+??? slice_detector.log
 
 
 Steps of action ( * taken & // planned)
