@@ -6,7 +6,8 @@ import logging
 class VertebraeDetector:
     def __init__(self, threshold=0.5):
         """
-        Init vertebraedector with prob treshold (param)
+        Init vertebraedector with prob treshold. This threshold is the prob of the vertebrae Cx that should be 
+        surpassed for the slide to be assigned to vertebrae Cx
         """
 
         self.threshold = threshold
