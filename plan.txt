@@ -1,5 +1,6 @@
 
 Program: Vertibrae c1-c7 fracture detection.
+
 Support program: Which vertebrae is in which C T SLIDES
 Architecture idea for support program:
 -Module data ingestion & preprocessing (data_handling)
@@ -7,7 +8,7 @@ Architecture idea for support program:
 -Module Sequence Generator & output (Seq_output): collects and gives as outputs data per vertebrae
 -Optional module(errors) if running into issues for debugging
 -Main module
-Architecture:
+Architecture of this support program:
 project_root/
 /data/
 ..train_segmented.csv etc.
@@ -24,7 +25,8 @@ project_root/
 
 
 Steps of action ( * taken & // planned)
-Project 1, Detecting which slides are 
-1. merge train_clean & meta_segmentation_clean mergen,
-2. Feature engineering 
+Project 1, detecting which vertebrae are in the slides
+STATUS FINISHED!
 
+Project 2, 
+actually detecting fractures from CT slides
