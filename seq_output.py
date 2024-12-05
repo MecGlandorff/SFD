@@ -54,5 +54,20 @@ class SequenceGenerator:
             self.logger.error(f"error saving sequences: {e}")
             raise
 
-        
+    
+    def save_detection_results(self, df, output_dir):
+        try:
+            self.logger.info("saving detection results...")
+
+            os.makedirs(output_dir, exist_ok=True)
+            output_path = os.path.join(output_dir, "detection_results.csv")
+            df.to_csv(output_path, index=False)
+
+            self.logger.info(f"detection results saved to {output_path}")
+
+        except Exception as e:
+            self.logger.error(f"error saving detection results: {e}")
+            raise
+
+
     
