@@ -43,8 +43,7 @@ class DataHandler:
                 # Loggin statement
                 self.logger.info(f'{df_name}: missing values handled')
             
-            # Below add the other preprocessing steps as merging etc. This module is totally useless still because the 
-            # way the files are now composed doesnt do shit :0:). 
+            # Below add the other preprocessing steps as merging etc.
 
             # Merge merge merggee
             self.merge_data()
@@ -72,15 +71,18 @@ class DataHandler:
 
             self.logger.info("merge completed")
 
-        # To check accuracy merge meta_segmentation_clean in here as well. Is optional though
+        # To check accuracy merge meta_segmentation_clean in here as well. Is optional though, RF*S and in later code maybe delete?
             if 'meta_segmentation_clean' in self.data:
                 df_meta_segmentation = self.data['meta_segmentation_clean']
 
                 # Loggin statement
                 self.logger.info("merging with meta_segmentation_clean for True labels")
 
-                merged_df = pd.merge(merged_df,df_meta_segmentation, on['StudyInstanceUID', "slice"], how='left',
-                suffixes=('',_gt))
+                merged_df = pd.merge(merged_df,df_meta_segmentation, on=['StudyInstanceUID', "slice"], how='left',
+                suffixes=('',_gt)) # _gt will be later defined as "ground truth" so to compare to prediction. 
+                #Columns frrom the right DF (merged_df) will have no change in name, but left (df_meta_segmentation) will have
+                # _gt added to it. 
+                
 
                 # Loggin statement
                 self.logger.info('True labels merged')
