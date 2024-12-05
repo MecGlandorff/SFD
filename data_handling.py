@@ -61,11 +61,11 @@ class DataHandler:
             self.logger.info("merging data")
 
             # Merge the segments. Later look into how and which for now just generalized method
-            df_segmented_data = self.data('train_segmented')
-            df_meta_train = self.data('meta_train_clean')
+            df_segmented_data = self.data['train_segmented']
+            df_meta_train = self.data['meta_train_clean']
 
             # Loggin' statement
-            self.logger.info()
+            self.logger.info("merging data :)")
             merged_df = pd.merge(df_segmented_data, df_meta_train, on=['StudyInstanceUID', 'Slice'], how='inner', 
             suffixes=("_segmented", "meta"))
 
@@ -78,7 +78,7 @@ class DataHandler:
                 # Loggin statement
                 self.logger.info("merging with meta_segmentation_clean for True labels")
 
-                merged_df = pd.merge(merged_df,df_meta_segmentation, on=['StudyInstanceUID', "slice"], how='left',
+                merged_df = pd.merge(merged_df,df_meta_segmentation, on=['StudyInstanceUID', "Slice"], how='left',
                 suffixes=('','_gt')) # _gt will be later defined as "ground truth" so to compare to prediction. 
                 #Columns frrom the right DF (merged_df) will have no change in name, but left (df_meta_segmentation) will have
                 # _gt added to it. 
