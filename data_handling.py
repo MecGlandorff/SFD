@@ -67,9 +67,29 @@ class DataHandler:
 
             # Loggin' statement
             self.logger.info()
-            merged_df = pd.merge(df_segmented_data, df_meta_train, on=[# forgot all the columns and too late for tomorrow point of continuation])
+            merged_df = pd.merge(df_segmented_data, df_meta_train, on=['StudyInstanceUID', 'Slice'], how='inner', 
+            suffixes=("_segmented", "meta"))
 
+            self.logger.info("merge completed")
 
+        # To check accuracy merge meta_segmentation_clean in here as well. Is optional though
+            if 'meta_segmentation_clean' in self.data:
+                df_meta_segmentation = self.data['meta_segmentation_clean']
+
+                # Loggin statement
+                self.logger.info("merging with meta_segmentation_clean for True labels")
+
+                merged_df = pd.merge(merged_df,df_meta_segmentation, on['StudyInstanceUID', "slice"], how='left',
+                suffixes=('',_gt))
+
+                # Loggin statement
+                self.logger.info('True labels merged')
+            
+            self.merged_data = merged_df
+    
+        except Exception as e:
+            self.logger.error(f"error during merging data: {e}")
+            raise
 
     def get_data(self):
         """
