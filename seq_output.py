@@ -34,5 +34,25 @@ class SequenceGenerator:
             
         except Exception as e:
             self.logger.error(f"error during sequence generation: {e}")
+
+
+    def save_sequences(self, sequences, output_dir):
+        """ Save sequences to a JSON file """
+
+        try: 
+            self.logger.info('saving sequences...')
+            os.makedirs(output_dir, exist_ok=True) 
+            output_path = os.path.join(output_dir, "sequences.json")
+
+            with open(output_path, "w") as f:
+                json.dump(sequences, f, indent =4)
+
+            # loggin statement
+            self.logger.info(f"sequences saved to {output_path}")
+
+        except Exception as e:
+            self.logger.error(f"error saving sequences: {e}")
+            raise
+
         
     
